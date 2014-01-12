@@ -234,6 +234,15 @@
     [self didChangeValueForKey:@"isFinished"];
 }
 
+#pragma mark - Cancel immediately
+-(void)cancel {
+    [self.putRequest cancel];
+    [super cancel];
+    
+    [self cleanup];
+    [self finish];
+}
+
 #pragma mark -
 
 @end
