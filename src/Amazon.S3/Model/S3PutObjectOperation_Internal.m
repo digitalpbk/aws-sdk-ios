@@ -234,6 +234,17 @@
     [self didChangeValueForKey:@"isFinished"];
 }
 
+#pragma mark - Cancel override
+
+-(void)cancel {
+    [super cancel];
+    if(_isExecuting) {
+        [self.putRequest cancel];
+        [self cleanup];
+        [self finish];
+    }
+}
+
 #pragma mark -
 
 @end
